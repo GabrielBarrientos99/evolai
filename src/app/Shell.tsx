@@ -10,7 +10,9 @@ import {Link} from '@astryxdesign/core/Link';
 import {Button} from '@astryxdesign/core/Button';
 import {Avatar} from '@astryxdesign/core/Avatar';
 import {Badge} from '@astryxdesign/core/Badge';
-import {SparklesIcon} from '@heroicons/react/24/outline';
+import {DropdownMenu} from '@astryxdesign/core/DropdownMenu';
+import {useMediaQuery} from '@astryxdesign/core/hooks';
+import {SparklesIcon, Bars3Icon} from '@heroicons/react/24/outline';
 import {themes, defaultThemeSlug} from '../../astryx-themes';
 import {entrar, salir, useSesion} from './auth';
 
@@ -27,6 +29,29 @@ export function Shell({actual, children}: {actual: Pagina; children: ReactNode})
   // El panel solo aparece para el admin (rol en Supabase). Sus acciones usan la API local de tu PC.
   const nav = esAdmin ? [...NAV, {id: 'panel' as const, label: 'Panel', href: 'panel.html'}] : NAV;
   const nombre = perfil?.nombre ?? sesion?.user.email ?? 'Usuario';
+  const esMovil = useMediaQuery('(max-width: 640px)');
+
+  // En móvil: logo + (avatar o "Entrar") + menú hamburguesa, todo en una sola fila.
+  const menuMovil = (
+    <HStack gap={2} vAlign="center">
+      {disponible &&
+        (sesion ? (
+          <Avatar name={nombre} src={perfil?.avatar_url ?? undefined} size="sm" />
+        ) : (
+          <Button label="Entrar" variant="primary" size="sm" clickAction={entrar} />
+        ))}
+      <DropdownMenu
+        hasChevron={false}
+        alignment="end"
+        button={{label: 'Menú', variant: 'ghost', size: 'sm', isIconOnly: true, icon: <Icon icon={Bars3Icon} />}}
+        items={[
+          ...nav.map(n => ({label: n.id === actual ? `${n.label} ·` : n.label, onClick: () => (window.location.href = n.href)})),
+          ...(sesion ? [{label: esAdmin ? 'Salir (admin)' : 'Salir', onClick: () => void salir()}] : []),
+        ]}
+      />
+    </HStack>
+  );
+
   const cuenta = !disponible ? null : sesion ? (
     <HStack gap={2} vAlign="center">
       {esAdmin && <Badge label="Admin" variant="info" />}
@@ -51,10 +76,12 @@ export function Shell({actual, children}: {actual: Pagina; children: ReactNode})
                   logo={<NavIcon icon={<Icon icon={SparklesIcon} size="sm" />} />}
                 />
               }
-              startContent={nav.map(n => (
-                <TopNavItem key={n.id} label={n.label} href={n.href} isSelected={n.id === actual} />
-              ))}
-              endContent={cuenta}
+              startContent={
+                esMovil
+                  ? undefined
+                  : nav.map(n => <TopNavItem key={n.id} label={n.label} href={n.href} isSelected={n.id === actual} />)
+              }
+              endContent={esMovil ? menuMovil : cuenta}
             />
           </LayoutHeader>
         }

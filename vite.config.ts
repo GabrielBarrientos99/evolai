@@ -6,6 +6,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({command}) => ({
   base: command === 'build' ? '/evolai/' : '/',
   plugins: [react()],
+  // En dev, escanear todas las páginas al arrancar evita recargas y el error de "dos copias de React".
+  optimizeDeps: {entries: ['index.html', 'curso.html', 'privacidad.html', 'panel.html']},
   build: {
     rollupOptions: {
       input: {

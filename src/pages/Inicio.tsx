@@ -61,7 +61,7 @@ export default function Inicio() {
         <Heading level={2} id="videos">
           Videos
         </Heading>
-        <Grid columns={{minWidth: 220}} gap={4}>
+        <Grid columns={{minWidth: 160, max: 4}} gap={4}>
           {visibles.map(p => (
             <Card key={p.id}>
               <VStack gap={3}>
