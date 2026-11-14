@@ -3,34 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Automatizacion Videos</title>
-<style>
-  body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; line-height: 1.6; color: #222; background: #fff; }
-  h1 { font-size: 1.8rem; margin-bottom: .2rem; }
-  .sub { color: #666; margin-top: 0; }
-  a { color: #0b57d0; }
-  footer { margin-top: 3rem; font-size: .9rem; color: #666; }
-</style>
+<title>Evolai · Videos con IA</title>
+<meta name="description" content="Evolai: videos hechos con inteligencia artificial, comparativas de modelos y la herramienta Automatizacion Videos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-<h1>Automatizacion Videos</h1>
-<p class="sub">Herramienta personal para publicar videos en mis propios canales de YouTube.</p>
+<header class="nav">
+  <a class="logo" href="#">evol<span>ai</span></a>
+  <nav>
+    <a href="#videos">Videos</a>
+    <a href="#app">App</a>
+    <a href="privacidad.html">Privacidad</a>
+  </nav>
+</header>
 
-<h2>¿Qué hace?</h2>
-<p>Automatizacion Videos es una aplicación de escritorio de uso personal. Usa la API de datos de YouTube (YouTube Data API v3) para:</p>
-<ul>
-  <li>Subir a mis canales los videos cortos que produzco, con su título, descripción y etiquetas.</li>
-  <li>Organizar esos videos en listas de reproducción.</li>
-  <li>Consultar estadísticas básicas (vistas, comentarios) de mis propios videos.</li>
-</ul>
-<p>Solo la usa el titular de los canales. No es un servicio abierto al público y no administra canales de otras personas.</p>
+<main>
+  <section class="hero">
+    <p class="kicker">Canal · Gabito Tu IA</p>
+    <h1>Probamos las IAs de video<br>para que tú no gastes de más.</h1>
+    <p class="lead">Misma imagen, mismo prompt, varios modelos. Comparamos resultados y precios, y compartimos los prompts para que los copies.</p>
+    <div class="ctas">
+      <a class="btn" href="https://www.youtube.com/@gabito-evol.online">Ver el canal</a>
+      <a class="btn ghost" href="#videos">Último video</a>
+    </div>
+  </section>
 
-<h2>Privacidad</h2>
-<p>Consulta la <a href="privacidad.html">Política de privacidad</a>.</p>
+  <section id="videos" class="block">
+    <h2>Último experimento</h2>
+    <article class="card">
+      <div class="card-text">
+        <p class="tag">Serie · 6 IAs, un dinosaurio</p>
+        <h3>Le di el mismo dinosaurio a 6 IAs 🦖</h3>
+        <p>MiniMax H3, Wan 2.5, Veo 3.1, Kling 4.0 y Seedance 2.0 animan el mismo huevo de lava. ¿Cuál vale lo que cuesta?</p>
+        <a class="link" href="https://youtu.be/UiY2NAwRnFk">Ver la Parte 1 →</a>
+      </div>
+      <ol class="ranking">
+        <li><b>Seedance 2.0 Fast</b><span>$0.75</span></li>
+        <li><b>Veo 3.1 Fast</b><span>$0.60</span></li>
+        <li><b>Kling 4.0 Flash</b><span>$0.47 · mejor valor</span></li>
+        <li><b>H3 Lite HD</b><span>$0.10</span></li>
+        <li><b>H3 Lite</b><span>$0.06</span></li>
+        <li><b>Wan 2.5</b><span>$0.50</span></li>
+      </ol>
+    </article>
+  </section>
 
-<h2>Contacto</h2>
-<p>gabriel.barrientos.c@uni.pe</p>
+  <section class="block grid3">
+    <div class="feat"><span>🧪</span><h3>Comparativas</h3><p>Los mismos prompts en varios modelos, con costo real por clip.</p></div>
+    <div class="feat"><span>🎬</span><h3>Prompts abiertos</h3><p>Cada video trae en la descripción los prompts usados, listos para copiar.</p></div>
+    <div class="feat"><span>🎓</span><h3>Curso (pronto)</h3><p>Cómo producir Shorts con IA de punta a punta: guion, voz, edición y publicación.</p></div>
+  </section>
 
-<footer>Automatizacion Videos · uso de la API de YouTube conforme a las <a href="https://developers.google.com/youtube/terms/api-services-terms-of-service">Condiciones del servicio de la API de YouTube</a>.</footer>
+  <section id="app" class="block app">
+    <h2>Automatizacion Videos</h2>
+    <p>Automatizacion Videos es la herramienta de escritorio de uso personal con la que publicamos en nuestros propios canales. Usa la API de datos de YouTube (YouTube Data API v3) para:</p>
+    <ul>
+      <li>Subir los videos que producimos, con su título, descripción y etiquetas.</li>
+      <li>Organizarlos en listas de reproducción.</li>
+      <li>Consultar estadísticas básicas (vistas, comentarios) de nuestros propios videos.</li>
+    </ul>
+    <p>Solo la usa el titular de los canales; no es un servicio abierto al público ni administra canales de otras personas. Lee la <a href="privacidad.html">Política de privacidad</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Evolai · Contacto: gabriel.barrientos.c@uni.pe</p>
+  <p><a href="privacidad.html">Política de privacidad</a> · Uso de la API conforme a las <a href="https://developers.google.com/youtube/terms/api-services-terms-of-service">Condiciones del servicio de la API de YouTube</a></p>
+</footer>
 </body>
 </html>
