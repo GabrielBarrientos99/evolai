@@ -12,7 +12,13 @@ export type Perfil = {id: string; email: string | null; nombre: string | null; a
 
 export async function entrar() {
   if (!supabase) return;
-  await supabase.auth.signInWithOAuth({provider: 'google', options: {redirectTo: window.location.href}});
+  // Volver a la misma página (sin el #hash, que Supabase usa para devolver la sesión)
+  // y pedir siempre elegir cuenta: así se puede entrar con el Gmail del canal aunque haya otra sesión abierta.
+  const {origin, pathname, search} = window.location;
+  await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {redirectTo: origin + pathname + search, queryParams: {prompt: 'select_account'}},
+  });
 }
 
 export async function salir() {
