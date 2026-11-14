@@ -16,11 +16,12 @@ import {SparklesIcon, Bars3Icon} from '@heroicons/react/24/outline';
 import {themes, defaultThemeSlug} from '../../astryx-themes';
 import {entrar, salir, useSesion} from './auth';
 
-export type Pagina = 'index' | 'curso' | 'privacidad' | 'panel';
+export type Pagina = 'index' | 'curso' | 'automatizacion' | 'privacidad' | 'panel';
 
 const NAV: {id: Pagina; label: string; href: string}[] = [
   {id: 'index', label: 'Inicio', href: './'},
   {id: 'curso', label: 'Curso', href: 'curso.html'},
+  {id: 'automatizacion', label: 'Automatización', href: 'automatizacion.html'},
   {id: 'privacidad', label: 'Privacidad', href: 'privacidad.html'},
 ];
 
