@@ -7,8 +7,12 @@ import {Icon} from '@astryxdesign/core/Icon';
 import {VStack, HStack} from '@astryxdesign/core/Stack';
 import {Text} from '@astryxdesign/core/Text';
 import {Link} from '@astryxdesign/core/Link';
+import {Button} from '@astryxdesign/core/Button';
+import {Avatar} from '@astryxdesign/core/Avatar';
+import {Badge} from '@astryxdesign/core/Badge';
 import {SparklesIcon} from '@heroicons/react/24/outline';
 import {themes, defaultThemeSlug} from '../../astryx-themes';
+import {entrar, salir, useSesion} from './auth';
 
 export type Pagina = 'index' | 'curso' | 'privacidad' | 'panel';
 
@@ -19,8 +23,19 @@ const NAV: {id: Pagina; label: string; href: string}[] = [
 ];
 
 export function Shell({actual, children}: {actual: Pagina; children: ReactNode}) {
-  // El panel solo existe en desarrollo (npm run dev): habla con la API local de tu PC.
-  const nav = import.meta.env.DEV ? [...NAV, {id: 'panel' as const, label: 'Panel local', href: 'panel.html'}] : NAV;
+  const {sesion, perfil, esAdmin, disponible} = useSesion();
+  // El panel solo aparece para el admin (rol en Supabase). Sus acciones usan la API local de tu PC.
+  const nav = esAdmin ? [...NAV, {id: 'panel' as const, label: 'Panel', href: 'panel.html'}] : NAV;
+  const nombre = perfil?.nombre ?? sesion?.user.email ?? 'Usuario';
+  const cuenta = !disponible ? null : sesion ? (
+    <HStack gap={2} vAlign="center">
+      {esAdmin && <Badge label="Admin" variant="info" />}
+      <Avatar name={nombre} src={perfil?.avatar_url ?? undefined} size="sm" />
+      <Button label="Salir" variant="ghost" size="sm" clickAction={salir} />
+    </HStack>
+  ) : (
+    <Button label="Iniciar sesión" variant="primary" size="sm" clickAction={entrar} />
+  );
   return (
     <Theme theme={themes[defaultThemeSlug]} mode="dark">
       <Layout
@@ -39,6 +54,7 @@ export function Shell({actual, children}: {actual: Pagina; children: ReactNode})
               startContent={nav.map(n => (
                 <TopNavItem key={n.id} label={n.label} href={n.href} isSelected={n.id === actual} />
               ))}
+              endContent={cuenta}
             />
           </LayoutHeader>
         }

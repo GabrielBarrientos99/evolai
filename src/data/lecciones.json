@@ -1,5 +1,10 @@
 [
   {
+    "slug": "tutorial-gratis",
+    "titulo": "Tutorial gratis · API de YouTube paso a paso",
+    "origen": "00_general_youtube/curso/tutorial_gratis_api_youtube.md"
+  },
+  {
     "slug": "leccion-01",
     "titulo": "Lección 1 · Compara 6 IAs de video",
     "origen": "00_general_youtube/curso/leccion_01_comparar_modelos_video_ia.md"

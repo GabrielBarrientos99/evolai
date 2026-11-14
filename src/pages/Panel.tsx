@@ -10,6 +10,8 @@ import {TextInput} from '@astryxdesign/core/TextInput';
 import {Selector} from '@astryxdesign/core/Selector';
 import {CodeBlock} from '@astryxdesign/core/CodeBlock';
 import {Link} from '@astryxdesign/core/Link';
+import {Spinner} from '@astryxdesign/core/Spinner';
+import {entrar, useSesion} from '../app/auth';
 import {ESTADO, fechaPeru, type Conexion, type Publicacion} from '../app/datos';
 
 // Panel local: solo funciona con `npm run dev` y la API de tu PC encendida
@@ -76,7 +78,7 @@ function Aprobar({p, alTerminar}: {p: PubPanel; alTerminar: (r: Resultado) => vo
   );
 }
 
-export default function Panel() {
+function PanelAdmin() {
   const [datos, setDatos] = useState<{publicaciones: PubPanel[]; conexiones: Conexion[]} | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [resultado, setResultado] = useState<Resultado | null>(null);
@@ -204,6 +206,22 @@ export default function Panel() {
           </VStack>
         </>
       )}
+    </VStack>
+  );
+}
+
+// Solo el admin (rol en la tabla perfiles de Supabase) ve el panel.
+export default function Panel() {
+  const {sesion, cargando, esAdmin} = useSesion();
+  if (cargando) return <Spinner label="Cargando sesión" />;
+  if (esAdmin) return <PanelAdmin />;
+  return (
+    <VStack gap={4} paddingBlock={10} hAlign="center">
+      <Heading level={1}>Panel solo para administradores</Heading>
+      <Text color="secondary">
+        {sesion ? 'Tu cuenta no tiene permisos de administrador.' : 'Inicia sesión con la cuenta de administrador.'}
+      </Text>
+      {!sesion && <Button label="Iniciar sesión con Google" variant="primary" clickAction={entrar} />}
     </VStack>
   );
 }
