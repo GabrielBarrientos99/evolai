@@ -1,0 +1,40 @@
+[
+  {
+    "id": "2026-11-14_6ias-mismo-dinosaurio_parte1",
+    "cuenta": "cuenta_gabito-tu-ia",
+    "canal": "Gabito Tu IA",
+    "handle": "@gabito-evol.online",
+    "titulo": "Le di el mismo dinosaurio a 6 IAs 🦖 (Parte 1)",
+    "serie": "Detrás de cámaras · “6 IAs, un dinosaurio” (Parte 1 de 2)",
+    "estado": "publicado",
+    "estado_texto": "Publicado · 14 nov 2026, 02:04 (hora de Perú) · https://youtu.be/UiY2NAwRnFk · ID UiY2NAwRnFk",
+    "hora_sugerida": "18:00 (hora de Perú)",
+    "video_id": "UiY2NAwRnFk",
+    "url": "https://youtu.be/UiY2NAwRnFk",
+    "programado_utc": null,
+    "publicado_utc": "2026-11-14T07:04:43Z",
+    "portada": "portadas/2026-11-14_6ias-mismo-dinosaurio_parte1.jpg",
+    "videos": [
+      "6ias_parte1_FINAL_voz-gemini-puck.mp4"
+    ]
+  },
+  {
+    "id": "2026-11-14_6ias-mismo-dinosaurio_parte2",
+    "cuenta": "cuenta_gabito-tu-ia",
+    "canal": "Gabito Tu IA",
+    "handle": "@gabito-evol.online",
+    "titulo": "La IA que mejor anima un dinosaurio 🏆 (Parte 2)",
+    "serie": "Detrás de cámaras · “6 IAs, un dinosaurio” (Parte 2 de 2)",
+    "estado": "programado",
+    "estado_texto": "Programado · 15 nov 2026, 18:00 (hora de Perú) · https://youtu.be/QkVJkGJIaEc · ID QkVJkGJIaEc",
+    "hora_sugerida": "18:00 (hora de Perú)",
+    "video_id": "QkVJkGJIaEc",
+    "url": "https://youtu.be/QkVJkGJIaEc",
+    "programado_utc": "2026-11-15T23:00:00Z",
+    "publicado_utc": null,
+    "portada": "portadas/2026-11-14_6ias-mismo-dinosaurio_parte2.jpg",
+    "videos": [
+      "6ias_parte2_FINAL_voz-gemini-puck.mp4"
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "slug": "leccion-01",
+    "titulo": "Lección 1 · Compara 6 IAs de video",
+    "origen": "00_general_youtube/curso/leccion_01_comparar_modelos_video_ia.md"
+  },
+  {
+    "slug": "conexion-youtube",
+    "titulo": "Conexión · YouTube Data API",
+    "origen": "00_general_youtube/README.md"
+  },
+  {
+    "slug": "conexion-replicate",
+    "titulo": "Conexión · Replicate",
+    "origen": "00_general_youtube/herramientas/replicate/README.md"
+  },
+  {
+    "slug": "costos-replicate",
+    "titulo": "Costos · Replicate vs. otras",
+    "origen": "00_general_youtube/herramientas/replicate/COMPARATIVA_COSTOS.md"
+  },
+  {
+    "slug": "voces",
+    "titulo": "Voces con IA",
+    "origen": "00_general_youtube/voces/README.md"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "cuenta_gabito-tu-ia/pruebas_ia/01_huevos_sorpresa_ia/temporada_01/episodios/ep01/bakeoff",
+    "pruebas": [
+      {
+        "prueba": "prueba_A_h3-lite_480p",
+        "costo_usd": 0.0625,
+        "segundos_generacion": 37
+      },
+      {
+        "prueba": "prueba_B_h3-lite_768p",
+        "costo_usd": 0.1,
+        "segundos_generacion": 26
+      },
+      {
+        "prueba": "prueba_D_kling-4-flash_720p",
+        "costo_usd": 0.47,
+        "segundos_generacion": 186
+      },
+      {
+        "prueba": "prueba_C_wan-2.5_720p",
+        "costo_usd": 0.5,
+        "segundos_generacion": 145
+      },
+      {
+        "prueba": "prueba_E_veo-3.1-fast_720p",
+        "costo_usd": 0.6,
+        "segundos_generacion": 5
+      },
+      {
+        "prueba": "prueba_F_seedance-2-fast_720p",
+        "costo_usd": 0.75,
+        "segundos_generacion": 22
+      }
+    ],
+    "errores": [
+      {
+        "modelo": "minimax/h3-lite@768",
+        "detalle": "error al lanzar: minimax/h3-lite: HTTP 429"
+      },
+      {
+        "modelo": "kwaivgi/kling-v4-flash",
+        "detalle": "error al lanzar: kwaivgi/kling-v4-flash: HTTP 429"
+      }
+    ]
+  }
+]

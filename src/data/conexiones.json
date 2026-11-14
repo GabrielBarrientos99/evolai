@@ -1,0 +1,25 @@
+[
+  {
+    "servicio": "YouTube Data API v3",
+    "cuenta": "AnimeGene Fusion",
+    "handle": "@ianime-g",
+    "estado": "autorizado"
+  },
+  {
+    "servicio": "YouTube Data API v3",
+    "cuenta": "Gabito Tu IA",
+    "handle": "@gabito-evol.online",
+    "estado": "autorizado"
+  },
+  {
+    "servicio": "YouTube Data API v3",
+    "cuenta": "GABRIEL ADRIAN BARRIENTOS CARDENAS",
+    "handle": "@gabrieladrianbarrientoscar55",
+    "estado": "autorizado"
+  },
+  {
+    "servicio": "Replicate",
+    "cuenta": "API token (pago por uso)",
+    "estado": "conectado"
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "_fuente": "Páginas de cada modelo en replicate.com (sección Pricing), leídas el 2026-11-13. Los precios cambian: revisar antes de gastar mucho.",
+  "video_por_segundo_usd": {
+    "minimax/h3-lite": {
+      "480p": 0.0125,
+      "768p": 0.02,
+      "_nota": "50% de descuento hasta el 31-dic-2026"
+    },
+    "wan-video/wan-2.5-i2v": {
+      "480p": 0.05,
+      "720p": 0.1,
+      "1080p": 0.15
+    },
+    "kwaivgi/kling-v4-flash": {
+      "720p": 0.094,
+      "720p_con_video_entrada": 0.063
+    },
+    "google/veo-3.1-fast": {
+      "con_audio": 0.15,
+      "sin_audio": 0.1
+    },
+    "bytedance/seedance-2.0-fast": {
+      "480p": 0.07,
+      "720p": 0.15
+    },
+    "bytedance/seedance-2.0": {
+      "480p": 0.08,
+      "720p": 0.18,
+      "1080p": 0.45
+    },
+    "kwaivgi/kling-v3-video": {
+      "standard_720p": 0.168,
+      "standard_audio": 0.252,
+      "pro_1080p": 0.224,
+      "pro_audio": 0.336,
+      "4k": 0.42
+    },
+    "kwaivgi/kling-v3-omni-video": {
+      "standard_720p": 0.168,
+      "standard_audio": 0.224,
+      "pro_1080p": 0.224,
+      "pro_audio": 0.28,
+      "4k": 0.42
+    }
+  },
+  "video_por_clip_usd": {
+    "minimax/hailuo-2.3-fast": {
+      "768p_6s": 0.19,
+      "768p_10s": 0.32,
+      "1080p_6s": 0.33
+    }
+  },
+  "imagen_por_unidad_usd": {
+    "bytedance/seedream-4": 0.03,
+    "google/nano-banana": 0.039,
+    "black-forest-labs/flux-1.1-pro": 0.04,
+    "black-forest-labs/flux-dev": 0.025
+  }
+}
