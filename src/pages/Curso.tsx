@@ -8,21 +8,29 @@ import {Markdown} from '@astryxdesign/core/Markdown';
 import {Table} from '@astryxdesign/core/Table';
 import {Badge} from '@astryxdesign/core/Badge';
 import {Banner} from '@astryxdesign/core/Banner';
+import {Button} from '@astryxdesign/core/Button';
+import {Grid} from '@astryxdesign/core/Grid';
 import {Link} from '@astryxdesign/core/Link';
 import {useMediaQuery} from '@astryxdesign/core/hooks';
-import {lecciones, textoLeccion, bakeoffs, conexiones, publicaciones, ESTADO, fechaPeru, urlPublica} from '../app/datos';
+import {textoLeccion, bakeoffs} from '../app/datos';
+import {CURSOS, cursoPorId, type Curso as TCurso} from '../app/cursos';
+import {TarjetaCurso} from '../app/TarjetaCurso';
+import {entrar, useSesion} from '../app/auth';
 
-const EXTRA = [
-  {slug: 'pruebas', titulo: 'Pruebas y costos reales'},
-  {slug: 'publicaciones', titulo: 'Publicaciones'},
-  {slug: 'conexiones', titulo: 'Conexiones'},
-];
-
-const leerHash = () => decodeURIComponent(window.location.hash.slice(1)) || lecciones[0]?.slug || 'pruebas';
+// Hash: "" → catálogo · "#<curso>" → primera lección · "#<curso>/<lección>".
+function leerHash(): {curso?: TCurso; slug?: string} {
+  const [a, b] = decodeURIComponent(window.location.hash.slice(1)).split('/');
+  if (!a) return {};
+  const curso = cursoPorId(a) ?? CURSOS.find(c => c.lecciones.some(l => l.slug === a)); // enlaces viejos
+  if (!curso) return {};
+  const slug = curso.lecciones.find(l => l.slug === (b ?? (cursoPorId(a) ? undefined : a)))?.slug ?? curso.lecciones[0].slug;
+  return {curso, slug};
+}
 
 function Pruebas() {
   return (
     <VStack gap={6}>
+      <Heading level={1}>Pruebas y costos reales</Heading>
       <Text color="secondary">
         Resultados exactos de cada bake-off: misma imagen y mismo prompt en cada modelo. Costo estimado por clip y
         segundos que tardó Replicate en generarlo.
@@ -53,96 +61,80 @@ function Pruebas() {
   );
 }
 
-function Publicaciones() {
+function Catalogo() {
+  const gratis = CURSOS.filter(c => c.tipo === 'gratis');
+  const pago = CURSOS.filter(c => c.tipo === 'pago');
   return (
-    <Table
-      data={publicaciones}
-      idKey="id"
-      columns={[
-        {key: 'titulo', header: 'Video', renderCell: p => (p.url ? <Link href={p.url}>{p.titulo}</Link> : p.titulo)},
-        {key: 'canal', header: 'Canal'},
-        {
-          key: 'estado',
-          header: 'Estado',
-          renderCell: p => <Badge label={ESTADO[p.estado].label} variant={ESTADO[p.estado].variant} />,
-        },
-        {
-          key: 'programado_utc',
-          header: 'Fecha (Perú)',
-          renderCell: p => fechaPeru(p.programado_utc ?? p.publicado_utc),
-        },
-      ]}
-    />
-  );
-}
-
-function Conexiones() {
-  return (
-    <VStack gap={4}>
-      <Text color="secondary">
-        Servicios conectados al proyecto. Las credenciales viven solo en la PC del titular; esta página muestra si
-        existen, nunca su valor. Guía paso a paso de Google Cloud y OAuth:{' '}
-        <Link href={urlPublica('tutorial/index.html')}>tutorial completo</Link>.
-      </Text>
-      <Table
-        data={conexiones.map((c, i) => ({...c, i: String(i)}))}
-        idKey="i"
-        columns={[
-          {key: 'servicio', header: 'Servicio'},
-          {key: 'cuenta', header: 'Cuenta'},
-          {
-            key: 'estado',
-            header: 'Estado',
-            renderCell: c => (
-              <Badge
-                label={c.estado}
-                variant={c.estado === 'autorizado' || c.estado === 'conectado' ? 'success' : 'warning'}
-              />
-            ),
-          },
-        ]}
-      />
+    <VStack gap={10} paddingBlock={8} style={{maxWidth: 1040, marginInline: 'auto', width: '100%'}}>
+      <VStack gap={2}>
+        <Heading level={1}>Cursos</Heading>
+        <Text color="secondary">
+          Aprende a producir y automatizar videos con IA. Los cursos gratis te dejan todo conectado; los de pago
+          enseñan la producción completa con pruebas reales.
+        </Text>
+      </VStack>
+      <VStack gap={4}>
+        <Heading level={2}>Gratis</Heading>
+        <Grid columns={{minWidth: 260}} gap={4}>
+          {gratis.map(c => (
+            <TarjetaCurso key={c.id} curso={c} />
+          ))}
+        </Grid>
+      </VStack>
+      <VStack gap={4}>
+        <Heading level={2}>De pago</Heading>
+        <Grid columns={{minWidth: 260}} gap={4}>
+          {pago.map(c => (
+            <TarjetaCurso key={c.id} curso={c} />
+          ))}
+        </Grid>
+      </VStack>
     </VStack>
   );
 }
 
-export default function Curso() {
-  const [actual, setActual] = useState(leerHash);
+function Bloqueado({curso}: {curso: TCurso}) {
+  const {sesion} = useSesion();
+  return (
+    <VStack gap={4}>
+      <Banner
+        status="info"
+        title="Lección del curso de pago"
+        description={`«${curso.titulo}» estará disponible pronto. Inicia sesión para que te avisemos cuando abra.`}
+      />
+      {!sesion && <Button label="Iniciar sesión" variant="primary" clickAction={entrar} />}
+    </VStack>
+  );
+}
+
+function VistaCurso({curso, slug}: {curso: TCurso; slug: string}) {
   const esMovil = useMediaQuery('(max-width: 768px)');
-  useEffect(() => {
-    const f = () => setActual(leerHash());
-    window.addEventListener('hashchange', f);
-    return () => window.removeEventListener('hashchange', f);
-  }, []);
-  const ir = (slug: string) => {
-    window.location.hash = slug;
+  const {esAdmin} = useSesion();
+  const ir = (s: string) => {
+    window.location.hash = `${curso.id}/${s}`;
     window.scrollTo({top: 0});
   };
-  const todas = [...lecciones, ...EXTRA];
-  const titulo = todas.find(l => l.slug === actual)?.titulo ?? '';
-
-  const nav = (
-    <SideNav>
-      <SideNavSection title="Lecciones y guías">
-        {lecciones.map(l => (
-          <SideNavItem key={l.slug} label={l.titulo} href={`#${l.slug}`} isSelected={l.slug === actual} />
-        ))}
-      </SideNavSection>
-      <SideNavSection title="Pruebas exactas">
-        {EXTRA.map(l => (
-          <SideNavItem key={l.slug} label={l.titulo} href={`#${l.slug}`} isSelected={l.slug === actual} />
-        ))}
-      </SideNavSection>
-    </SideNav>
-  );
+  // Las lecciones de pago solo las ve el admin mientras el curso no está a la venta.
+  const puedeVer = curso.tipo === 'gratis' || esAdmin;
 
   return (
     <Layout
       height="auto"
       start={
         esMovil ? undefined : (
-          <LayoutPanel width={280} hasDivider isScrollable={false} label="Índice del curso">
-            {nav}
+          <LayoutPanel width={300} hasDivider isScrollable={false} label="Lecciones del curso">
+            <SideNav>
+              <SideNavSection title={curso.titulo}>
+                {curso.lecciones.map(l => (
+                  <SideNavItem
+                    key={l.slug}
+                    label={l.titulo}
+                    href={`#${curso.id}/${l.slug}`}
+                    isSelected={l.slug === slug}
+                  />
+                ))}
+              </SideNavSection>
+            </SideNav>
           </LayoutPanel>
         )
       }
@@ -150,32 +142,44 @@ export default function Curso() {
         <LayoutContent isScrollable={false} padding={8}>
           <VStack gap={6}>
             <VStack gap={2}>
+              <Link href="curso.html">← Todos los cursos</Link>
               <HStack gap={2}>
-                <Badge label="Curso · Shorts con IA" variant="info" />
+                <Badge
+                  label={curso.tipo === 'gratis' ? 'Gratis' : curso.precio ?? 'De pago'}
+                  variant={curso.tipo === 'gratis' ? 'success' : 'warning'}
+                />
+                <Badge label={curso.nivel} variant="neutral" />
               </HStack>
               {esMovil && (
                 <Selector
                   label="Lección"
-                  options={todas.map(l => ({value: l.slug, label: l.titulo}))}
-                  value={actual}
+                  options={curso.lecciones.map(l => ({value: l.slug, label: l.titulo}))}
+                  value={slug}
                   onChange={ir}
                   width="100%"
                 />
               )}
-              {!lecciones.some(l => l.slug === actual) && <Heading level={1}>{titulo}</Heading>}
             </VStack>
-            {actual === 'pruebas' ? (
+            {!puedeVer ? (
+              <Bloqueado curso={curso} />
+            ) : slug === 'pruebas' ? (
               <Pruebas />
-            ) : actual === 'publicaciones' ? (
-              <Publicaciones />
-            ) : actual === 'conexiones' ? (
-              <Conexiones />
             ) : (
-              <Markdown contentWidth={760}>{textoLeccion(actual)}</Markdown>
+              <Markdown contentWidth={760}>{textoLeccion(slug)}</Markdown>
             )}
           </VStack>
         </LayoutContent>
       }
     />
   );
+}
+
+export default function Curso() {
+  const [estado, setEstado] = useState(leerHash);
+  useEffect(() => {
+    const f = () => setEstado(leerHash());
+    window.addEventListener('hashchange', f);
+    return () => window.removeEventListener('hashchange', f);
+  }, []);
+  return estado.curso && estado.slug ? <VistaCurso curso={estado.curso} slug={estado.slug} /> : <Catalogo />;
 }
