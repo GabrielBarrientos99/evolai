@@ -16,6 +16,7 @@ import {textoLeccion, bakeoffs} from '../app/datos';
 import {CURSOS, cursoPorId, type Curso as TCurso} from '../app/cursos';
 import {TarjetaCurso} from '../app/TarjetaCurso';
 import {entrar, useSesion} from '../app/auth';
+import {Voces} from '../app/Voces';
 
 // Hash: "" → catálogo · "#<curso>" → primera lección · "#<curso>/<lección>".
 function leerHash(): {curso?: TCurso; slug?: string} {
@@ -164,6 +165,11 @@ function VistaCurso({curso, slug}: {curso: TCurso; slug: string}) {
               <Bloqueado curso={curso} />
             ) : slug === 'pruebas' ? (
               <Pruebas />
+            ) : slug === 'voces' ? (
+              <VStack gap={8}>
+                <Voces />
+                <Markdown contentWidth={760}>{textoLeccion(slug)}</Markdown>
+              </VStack>
             ) : (
               <Markdown contentWidth={760}>{textoLeccion(slug)}</Markdown>
             )}

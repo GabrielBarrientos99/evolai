@@ -4,11 +4,11 @@ Guía de opciones para la voz en off de los Shorts: **gratis en tu PC**, **grati
 
 - **Frase de prueba** (igual en todas las muestras): “Le di esta misma imagen a seis inteligencias artificiales. ¿Cuál lo hace mejor?”
 - **Muestras:** carpeta `muestras/` (`gratis_*` = costo $0 · `pago_*` = Replicate).
-- **Página comparativa con reproductores:** ver el enlace “Voces IA” en el chat.
+- **Escúchalas:** cada muestra tiene su reproductor al inicio de esta lección.
 
 ## 1. Gratis en tu PC (sin internet ni API)
 
-Tu PC tiene una **NVIDIA RTX 5060 de 8 GB**, suficiente para correr voces de código abierto en local.
+Con una tarjeta **NVIDIA de 8 GB** (por ejemplo una RTX 5060) puedes correr voces de código abierto en tu PC.
 
 | Opción | Calidad | Voces en español | Instalación | Licencia / uso comercial | Muestra |
 |---|---|---|---|---|---|
@@ -70,6 +70,6 @@ edge-tts --voice es-PE-AlexNeural --rate=+5% --text "Hola, soy Magma" --write-me
 
 
 1. **Para empezar, gratis:** **edge-tts con `es-PE-AlexNeural` o `es-MX-JorgeNeural`**. Suenan naturales, tienen acento latino (¡peruano!) y cuestan $0.
-2. **Narrador fijo del canal, gratis y local:** **Chatterbox o Kokoro con Pinokio** en tu RTX 5060. Chatterbox además puede **clonar tu voz** con una muestra de 10–20 s.
+2. **Narrador fijo del canal, gratis y local:** **Chatterbox o Kokoro con Pinokio** en tu GPU. Chatterbox además puede **clonar tu voz** con una muestra de 10–20 s.
 3. **Si necesitas más actuación** (risas, susurros, dos personajes hablando): **Gemini 3.8 Flash TTS** o **ElevenLabs v3** en Replicate. Siguen costando menos de $1 al mes.
 4. **La voz de Magma** (chillidos, gruñidos): no es texto a voz. Conviene un banco de efectos o un modelo de audio aparte.

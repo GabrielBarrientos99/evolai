@@ -1,0 +1,187 @@
+{
+  "frase": "Le di esta misma imagen a seis inteligencias artificiales. ¿Cuál lo hace mejor?",
+  "voces": [
+    {
+      "archivo": "pago_gemini_puck_dirigida.mp3",
+      "nombre": "Gemini · Puck dirigida",
+      "categoria": "pago",
+      "costo": "< $0.05 por Short",
+      "elegida": true,
+      "nota": "La voz del canal. Recibe una indicación de actuación por línea y sonidos como risas o pausas.",
+      "url": "voces/pago_gemini_puck_dirigida.mp3"
+    },
+    {
+      "archivo": "pago_gemini_puck_risa_alas.mp3",
+      "nombre": "Gemini · Puck con risa",
+      "categoria": "pago",
+      "costo": "< $0.05 por Short",
+      "nota": "La misma voz con una risa real dentro del texto (<laugh>).",
+      "url": "voces/pago_gemini_puck_risa_alas.mp3"
+    },
+    {
+      "archivo": "gratis_edge_alex_con_tonos.mp3",
+      "nombre": "Alex · Perú con tonos",
+      "categoria": "web",
+      "costo": "$0",
+      "nota": "Respaldo gratis: edge-tts con cambios de tono por frase.",
+      "url": "voces/gratis_edge_alex_con_tonos.mp3"
+    },
+    {
+      "archivo": "prosodia/alex_plano.mp3",
+      "nombre": "Alex · Perú plano",
+      "categoria": "web",
+      "costo": "$0",
+      "nota": "La misma voz sin dirección: compárala con la versión con tonos.",
+      "url": "voces/prosodia_alex_plano.mp3"
+    },
+    {
+      "archivo": "pago_minimax_speech02turbo_storyteller.mp3",
+      "nombre": "MiniMax · Captivating Storyteller",
+      "categoria": "pago",
+      "costo": "$0.024 por Short",
+      "url": "voces/pago_minimax_speech02turbo_storyteller.mp3"
+    },
+    {
+      "archivo": "gratis_edge_es-PE-AlexNeural.mp3",
+      "nombre": "Alex · Perú",
+      "categoria": "web",
+      "costo": "$0",
+      "url": "voces/gratis_edge_es-PE-AlexNeural.mp3"
+    },
+    {
+      "archivo": "gratis_edge_es-PE-CamilaNeural.mp3",
+      "nombre": "Camila · Perú",
+      "categoria": "web",
+      "costo": "$0",
+      "url": "voces/gratis_edge_es-PE-CamilaNeural.mp3"
+    },
+    {
+      "archivo": "gratis_edge_es-MX-JorgeNeural.mp3",
+      "nombre": "Jorge · México",
+      "categoria": "web",
+      "costo": "$0",
+      "url": "voces/gratis_edge_es-MX-JorgeNeural.mp3"
+    },
+    {
+      "archivo": "gratis_edge_es-MX-DaliaNeural.mp3",
+      "nombre": "Dalia · México",
+      "categoria": "web",
+      "costo": "$0",
+      "url": "voces/gratis_edge_es-MX-DaliaNeural.mp3"
+    },
+    {
+      "archivo": "gratis_edge_es-AR-TomasNeural.mp3",
+      "nombre": "Tomás · Argentina",
+      "categoria": "web",
+      "costo": "$0",
+      "url": "voces/gratis_edge_es-AR-TomasNeural.mp3"
+    },
+    {
+      "archivo": "gratis_edge_es-ES-AlvaroNeural.mp3",
+      "nombre": "Álvaro · España",
+      "categoria": "web",
+      "costo": "$0",
+      "url": "voces/gratis_edge_es-ES-AlvaroNeural.mp3"
+    },
+    {
+      "archivo": "gratis_edge_es-US-AlonsoNeural.mp3",
+      "nombre": "Alonso · EE. UU. (latino)",
+      "categoria": "web",
+      "costo": "$0",
+      "url": "voces/gratis_edge_es-US-AlonsoNeural.mp3"
+    },
+    {
+      "archivo": "gratis_piper_es_MX-claude-high.mp3",
+      "nombre": "Piper · Claude (México)",
+      "categoria": "pc",
+      "costo": "$0",
+      "url": "voces/gratis_piper_es_MX-claude-high.mp3"
+    },
+    {
+      "archivo": "gratis_piper_es_AR-daniela-high.mp3",
+      "nombre": "Piper · Daniela (Argentina)",
+      "categoria": "pc",
+      "costo": "$0",
+      "url": "voces/gratis_piper_es_AR-daniela-high.mp3"
+    },
+    {
+      "archivo": "gratis_windows_sabina.mp3",
+      "nombre": "Windows · Sabina",
+      "categoria": "pc",
+      "costo": "$0",
+      "nota": "Viene con Windows: robótica, solo como referencia.",
+      "url": "voces/gratis_windows_sabina.mp3"
+    },
+    {
+      "archivo": "gratis_chatterbox_voz_por_defecto.mp3",
+      "nombre": "Chatterbox · voz por defecto",
+      "categoria": "pc",
+      "costo": "$0",
+      "url": "voces/gratis_chatterbox_voz_por_defecto.mp3"
+    },
+    {
+      "archivo": "gratis_chatterbox_clon_piper_mx.mp3",
+      "nombre": "Chatterbox · clonando una voz",
+      "categoria": "pc",
+      "costo": "$0",
+      "nota": "Clonación de voz con una muestra corta, en tu propia GPU.",
+      "url": "voces/gratis_chatterbox_clon_piper_mx.mp3"
+    },
+    {
+      "archivo": "pago_elevenlabs_Roger.mp3",
+      "nombre": "ElevenLabs · Roger",
+      "categoria": "pago",
+      "costo": "$0.02–0.04 por Short",
+      "url": "voces/pago_elevenlabs_Roger.mp3"
+    },
+    {
+      "archivo": "pago_elevenlabs_Mark.mp3",
+      "nombre": "ElevenLabs · Mark",
+      "categoria": "pago",
+      "costo": "$0.02–0.04 por Short",
+      "url": "voces/pago_elevenlabs_Mark.mp3"
+    },
+    {
+      "archivo": "pago_elevenlabs_Drew.mp3",
+      "nombre": "ElevenLabs · Drew",
+      "categoria": "pago",
+      "costo": "$0.02–0.04 por Short",
+      "url": "voces/pago_elevenlabs_Drew.mp3"
+    },
+    {
+      "archivo": "pago_elevenlabs_Bradford.mp3",
+      "nombre": "ElevenLabs · Bradford",
+      "categoria": "pago",
+      "costo": "$0.02–0.04 por Short",
+      "url": "voces/pago_elevenlabs_Bradford.mp3"
+    },
+    {
+      "archivo": "pago_elevenlabs_Sarah.mp3",
+      "nombre": "ElevenLabs · Sarah",
+      "categoria": "pago",
+      "costo": "$0.02–0.04 por Short",
+      "url": "voces/pago_elevenlabs_Sarah.mp3"
+    },
+    {
+      "archivo": "pago_elevenlabs_Aria.mp3",
+      "nombre": "ElevenLabs · Aria",
+      "categoria": "pago",
+      "costo": "$0.02–0.04 por Short",
+      "url": "voces/pago_elevenlabs_Aria.mp3"
+    },
+    {
+      "archivo": "pago_elevenlabs_Rachel.mp3",
+      "nombre": "ElevenLabs · Rachel",
+      "categoria": "pago",
+      "costo": "$0.02–0.04 por Short",
+      "url": "voces/pago_elevenlabs_Rachel.mp3"
+    },
+    {
+      "archivo": "pago_elevenlabs_Alexandra.mp3",
+      "nombre": "ElevenLabs · Alexandra",
+      "categoria": "pago",
+      "costo": "$0.02–0.04 por Short",
+      "url": "voces/pago_elevenlabs_Alexandra.mp3"
+    }
+  ]
+}
