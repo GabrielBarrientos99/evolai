@@ -63,7 +63,12 @@ export const CURSOS: Curso[] = [
     icono: FilmIcon,
     nivel: 'Intermedio',
     lecciones: [
+      {slug: 'estrategia', titulo: 'Lección 0 · Estrategia para monetizar tu canal de Shorts'},
       {slug: 'leccion-01', titulo: 'Lección 1 · Compara 6 IAs de video y conviértelo en un Short'},
+      {slug: 'leccion-02', titulo: 'Lección 2 · Personajes consistentes para una serie'},
+      {slug: 'leccion-03', titulo: 'Lección 3 · Del guion a las escenas: episodio piloto'},
+      {slug: 'leccion-04', titulo: 'Lección 4 · Montaje en Remotion: textos, música y loop'},
+      {slug: 'leccion-05', titulo: 'Lección 5 · Subir y programar con la API de YouTube'},
       {slug: 'pruebas', titulo: 'Pruebas y costos reales'},
     ],
   },

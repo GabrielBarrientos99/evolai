@@ -36,5 +36,24 @@
     "videos": [
       "6ias_parte2_FINAL_voz-gemini-puck.mp4"
     ]
+  },
+  {
+    "id": "2026-11-15_huevitos-sorpresa_ep01",
+    "cuenta": "cuenta_gabito-tu-ia",
+    "canal": "Gabito Tu IA",
+    "handle": "@gabito-evol.online",
+    "titulo": "¡El huevito de lava ha vuelto! | Huevitos Sorpresa Ep.1",
+    "serie": "Huevitos Sorpresa: La Isla · Temporada 1 · Ep. 1 de 10",
+    "estado": "programado",
+    "estado_texto": "Programado · 16 nov 2026, 18:00 (hora de Perú) · https://youtu.be/h-yIPuzr0k4 · ID h-yIPuzr0k4",
+    "hora_sugerida": "",
+    "video_id": "h-yIPuzr0k4",
+    "url": "https://youtu.be/h-yIPuzr0k4",
+    "programado_utc": "2026-11-16T23:00:00Z",
+    "publicado_utc": null,
+    "portada": "portadas/2026-11-15_huevitos-sorpresa_ep01.jpg",
+    "videos": [
+      "huevitos_ep01_FINAL.mp4"
+    ]
   }
 ]

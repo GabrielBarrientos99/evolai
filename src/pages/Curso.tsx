@@ -150,6 +150,10 @@ function VistaCurso({curso, slug}: {curso: TCurso; slug: string}) {
                   variant={curso.tipo === 'gratis' ? 'success' : 'warning'}
                 />
                 <Badge label={curso.nivel} variant="neutral" />
+                {/* PDF generado por exportar_pdf.py; solo existe para las lecciones gratis */}
+                {curso.tipo === 'gratis' && slug !== 'pruebas' && (
+                  <Link href={`curso/pdf/${slug}.pdf`}>Descargar PDF ↓</Link>
+                )}
               </HStack>
               {esMovil && (
                 <Selector

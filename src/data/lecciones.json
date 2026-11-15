@@ -5,9 +5,34 @@
     "origen": "00_general_youtube/curso/tutorial_gratis_api_youtube.md"
   },
   {
+    "slug": "estrategia",
+    "titulo": "Lección 0 · Estrategia para monetizar",
+    "origen": "00_general_youtube/curso/leccion_00_estrategia_monetizar.md"
+  },
+  {
     "slug": "leccion-01",
     "titulo": "Lección 1 · Compara 6 IAs de video",
     "origen": "00_general_youtube/curso/leccion_01_comparar_modelos_video_ia.md"
+  },
+  {
+    "slug": "leccion-02",
+    "titulo": "Lección 2 · Personajes consistentes",
+    "origen": "00_general_youtube/curso/leccion_02_personajes_consistentes.md"
+  },
+  {
+    "slug": "leccion-03",
+    "titulo": "Lección 3 · Episodio piloto: guion a escenas",
+    "origen": "00_general_youtube/curso/leccion_03_episodio_piloto.md"
+  },
+  {
+    "slug": "leccion-04",
+    "titulo": "Lección 4 · Montaje en Remotion",
+    "origen": "00_general_youtube/curso/leccion_04_montaje_remotion.md"
+  },
+  {
+    "slug": "leccion-05",
+    "titulo": "Lección 5 · Subir y programar con la API",
+    "origen": "00_general_youtube/curso/leccion_05_subir_programar.md"
   },
   {
     "slug": "conexion-youtube",
