@@ -17,6 +17,9 @@ import {CURSOS, cursoPorId, type Curso as TCurso} from '../app/cursos';
 import {TarjetaCurso} from '../app/TarjetaCurso';
 import {entrar, useSesion} from '../app/auth';
 import {Voces} from '../app/Voces';
+import {MediaLeccion} from '../app/MediaLeccion';
+
+const componentesLeccion = {image: MediaLeccion};
 
 // Hash: "" → catálogo · "#<curso>" → primera lección · "#<curso>/<lección>".
 function leerHash(): {curso?: TCurso; slug?: string} {
@@ -172,10 +175,14 @@ function VistaCurso({curso, slug}: {curso: TCurso; slug: string}) {
             ) : slug === 'voces' ? (
               <VStack gap={8}>
                 <Voces />
-                <Markdown contentWidth={760}>{textoLeccion(slug)}</Markdown>
+                <Markdown contentWidth={760} components={componentesLeccion}>
+                  {textoLeccion(slug)}
+                </Markdown>
               </VStack>
             ) : (
-              <Markdown contentWidth={760}>{textoLeccion(slug)}</Markdown>
+              <Markdown contentWidth={760} components={componentesLeccion}>
+                {textoLeccion(slug)}
+              </Markdown>
             )}
           </VStack>
         </LayoutContent>

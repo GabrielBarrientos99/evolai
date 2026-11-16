@@ -9,8 +9,41 @@ import {List, ListItem} from '@astryxdesign/core/List';
 import {Link} from '@astryxdesign/core/Link';
 import {AspectRatio} from '@astryxdesign/core/AspectRatio';
 import {ArrowRightIcon} from '@heroicons/react/20/solid';
-import {BeakerIcon, CodeBracketIcon, AcademicCapIcon} from '@heroicons/react/24/outline';
+import {
+  BeakerIcon,
+  CodeBracketIcon,
+  AcademicCapIcon,
+  ChatBubbleLeftRightIcon,
+  FilmIcon,
+  MegaphoneIcon,
+} from '@heroicons/react/24/outline';
 import {publicaciones, ESTADO, fechaPeru, urlPublica} from '../app/datos';
+
+const WHATSAPP = 'https://wa.me/51937460009?text=Hola%20Biai%2C%20quiero%20una%20demo%20de%20LAIA';
+
+const SERVICIOS = [
+  {
+    icon: ChatBubbleLeftRightIcon,
+    etiqueta: 'Partner oficial de LAIA',
+    t: 'Asistente de IA en tu WhatsApp',
+    d: 'Implementamos LAIA: atiende a tus clientes 24/7, responde consultas, agenda citas y cierra ventas. Instalación, capacitación y soporte en Perú.',
+    accion: {label: 'Pedir demo gratis', href: WHATSAPP},
+  },
+  {
+    icon: FilmIcon,
+    etiqueta: 'Video con IA',
+    t: 'Videos para tu marca',
+    d: 'Anuncios, Shorts y videos explicativos hechos con IA: comparamos modelos para darte calidad al menor costo.',
+    accion: {label: 'Ver nuestros videos', href: '#videos'},
+  },
+  {
+    icon: AcademicCapIcon,
+    etiqueta: 'Cursos',
+    t: 'Tutoriales de automatización',
+    d: 'Aprende a automatizar paso a paso: YouTube, Replicate, voces con IA, Shorts y anuncios en Meta. Con capturas y costos reales.',
+    accion: {label: 'Ver cursos', href: 'curso.html'},
+  },
+];
 
 const RANKING = [
   ['Seedance 2.0 Fast', '$0.75', 'la más fiel al personaje'],
@@ -24,7 +57,7 @@ const RANKING = [
 const FEATS = [
   {icon: BeakerIcon, t: 'Comparativas', d: 'Los mismos prompts en varios modelos, con el costo real de cada clip.'},
   {icon: CodeBracketIcon, t: 'Prompts abiertos', d: 'Cada video trae en la descripción los prompts usados, listos para copiar.'},
-  {icon: AcademicCapIcon, t: 'Curso', d: 'Cómo producir Shorts con IA de punta a punta: guion, voz, edición y publicación.'},
+  {icon: AcademicCapIcon, t: 'Curso de Shorts', d: 'Cómo producir Shorts con IA de punta a punta: guion, voz, edición y publicación.'},
 ];
 
 const portadaStyle = {width: '100%', height: '100%', objectFit: 'cover' as const, borderRadius: 'var(--radius-page)'};
@@ -36,30 +69,62 @@ export default function Inicio() {
       <VStack gap={6} hAlign="center">
         <VStack gap={3} hAlign="center">
           <Text type="label" color="accent">
-            Canal · Gabito Tu IA
+            Biai · Partner oficial de LAIA
           </Text>
           <Heading level={1} type="display-2" justify="center" textWrap="balance">
-            Probamos las IAs de video para que tú no gastes de más.
+            Agencia de IA para tu negocio, 24/7.
           </Heading>
           <Text type="large" color="secondary" justify="center" textWrap="balance">
-            Misma imagen, mismo prompt, varios modelos. Comparamos resultados y precios, y compartimos los prompts
-            para que los copies.
+            Asistentes que atienden, agendan y venden por WhatsApp, videos hechos con IA y cursos para que automatices
+            tu negocio paso a paso.
           </Text>
         </VStack>
         <HStack gap={3} wrap="wrap" hAlign="center">
           <Button
-            label="Ver el curso"
+            label="Pedir demo por WhatsApp"
             variant="primary"
-            href="curso.html"
+            href={WHATSAPP}
             endContent={<Icon icon={ArrowRightIcon} size="sm" color="inherit" />}
           />
-          <Button label="Ver el canal" variant="secondary" href="https://www.youtube.com/@gabito-evol.online" />
+          <Button label="Ver cursos" variant="secondary" href="curso.html" />
+        </HStack>
+      </VStack>
+
+      <Grid columns={{minWidth: 260}} gap={4}>
+        {SERVICIOS.map(s => (
+          <Card key={s.t}>
+            <VStack gap={3}>
+              <HStack gap={2} vAlign="center">
+                <Icon icon={s.icon} size="md" color="accent" />
+                <Text type="label" color="secondary">
+                  {s.etiqueta}
+                </Text>
+              </HStack>
+              <Heading level={3}>{s.t}</Heading>
+              <Text color="secondary">{s.d}</Text>
+              <Link href={s.accion.href}>{s.accion.label}</Link>
+            </VStack>
+          </Card>
+        ))}
+      </Grid>
+
+      <VStack gap={3}>
+        <HStack gap={2} vAlign="center">
+          <Icon icon={MegaphoneIcon} size="md" color="accent" />
+          <Heading level={2}>Nuevo: anuncios en Meta para tu negocio</Heading>
+        </HStack>
+        <Text color="secondary">
+          Cómo funciona hoy el algoritmo de Meta, cómo configurar Business Manager y WhatsApp, y el plan por fases que
+          usamos para lanzar nuestras propias campañas. Gratis y con capturas.
+        </Text>
+        <HStack gap={3} wrap="wrap">
+          <Button label="Ver el curso de anuncios" variant="secondary" href="curso.html#marketing-meta" />
         </HStack>
       </VStack>
 
       <VStack gap={4}>
         <Heading level={2} id="videos">
-          Videos
+          Videos del canal Gabito Tu IA
         </Heading>
         <Grid columns={{minWidth: 160, max: 4}} gap={4}>
           {visibles.map(p => (

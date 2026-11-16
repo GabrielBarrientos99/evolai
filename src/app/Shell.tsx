@@ -20,7 +20,7 @@ export type Pagina = 'index' | 'curso' | 'automatizacion' | 'privacidad' | 'pane
 
 const NAV: {id: Pagina; label: string; href: string}[] = [
   {id: 'index', label: 'Inicio', href: './'},
-  {id: 'curso', label: 'Curso', href: 'curso.html'},
+  {id: 'curso', label: 'Cursos', href: 'curso.html'},
   {id: 'automatizacion', label: 'Automatización', href: 'automatizacion.html'},
   {id: 'privacidad', label: 'Privacidad', href: 'privacidad.html'},
 ];
@@ -72,7 +72,7 @@ export function Shell({actual, children}: {actual: Pagina; children: ReactNode})
               label="Navegación principal"
               heading={
                 <TopNavHeading
-                  heading="evolai"
+                  heading="biai"
                   headingHref="./"
                   logo={<NavIcon icon={<Icon icon={SparklesIcon} size="sm" />} />}
                 />
@@ -91,7 +91,8 @@ export function Shell({actual, children}: {actual: Pagina; children: ReactNode})
           <LayoutFooter hasDivider>
             <VStack gap={1} paddingBlock={3}>
               <Text type="supporting" color="secondary">
-                Evolai · canal Gabito Tu IA · Contacto: gabriel.barrientos.c@uni.pe
+                Biai: Business Innovation Artificial Intelligence S.A.C. · Partner oficial de LAIA · canal Gabito Tu IA ·
+                Contacto: gabriel@fesosa.com · WhatsApp +51 937 460 009
               </Text>
               <HStack gap={2} wrap="wrap">
                 <Link href="privacidad.html" type="supporting">

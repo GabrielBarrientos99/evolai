@@ -1,5 +1,5 @@
 import type {ComponentType, SVGProps} from 'react';
-import {CommandLineIcon, CpuChipIcon, MicrophoneIcon, FilmIcon} from '@heroicons/react/24/outline';
+import {CommandLineIcon, CpuChipIcon, MicrophoneIcon, FilmIcon, MegaphoneIcon} from '@heroicons/react/24/outline';
 
 // Catálogo de cursos. `lecciones` son slugs de src/data/lecciones/*.md (los genera exportar_web.py),
 // salvo 'pruebas', que es la tabla de resultados reales de los bake-offs.
@@ -16,6 +16,24 @@ export type Curso = {
 };
 
 export const CURSOS: Curso[] = [
+  {
+    id: 'marketing-meta',
+    titulo: 'Anuncios en Meta para tu negocio',
+    resumen:
+      'Cómo funciona hoy el algoritmo de Meta, cómo configurar Business Manager y WhatsApp, cómo estudiar a tu competencia y el plan por fases para lanzar campañas a WhatsApp.',
+    tipo: 'gratis',
+    portada: 'curso/img/meta/portada.jpg',
+    icono: MegaphoneIcon,
+    nivel: 'Principiante',
+    lecciones: [
+      {slug: 'meta-01-algoritmo', titulo: 'Lección 1 · Cómo funciona hoy el algoritmo de Meta'},
+      {slug: 'meta-02-business-manager', titulo: 'Lección 2 · Configura Business Manager, página y WhatsApp'},
+      {slug: 'meta-03-competencia', titulo: 'Lección 3 · Investiga a tu competencia y tu mercado'},
+      {slug: 'meta-04-plan-fases', titulo: 'Lección 4 · El plan por fases para lanzar campañas'},
+      {slug: 'meta-05-creativos-ia', titulo: 'Lección 5 · Creativos: capturas reales y fondos con IA'},
+      {slug: 'meta-06-crear-campana', titulo: 'Lección 6 · Crea tu campaña a WhatsApp y entiende cómo aprende Meta'},
+    ],
+  },
   {
     id: 'api-youtube',
     titulo: 'Automatiza tu canal con la API de YouTube',

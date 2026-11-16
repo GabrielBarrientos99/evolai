@@ -74,7 +74,7 @@ function Conectar({cuentas, apiOk}: {cuentas: Cuenta[]; apiOk: boolean}) {
         <Card>
           <VStack gap={2}>
             <HStack gap={2} vAlign="center">
-              <Text weight="semibold">Cuenta Evolai</Text>
+              <Text weight="semibold">Cuenta Biai</Text>
               <Badge label={sesion ? 'Conectada' : 'Sin sesión'} variant={sesion ? 'success' : 'warning'} />
             </HStack>
             <Text type="supporting" color="secondary">Supabase guarda tu perfil y tus proyectos.</Text>
