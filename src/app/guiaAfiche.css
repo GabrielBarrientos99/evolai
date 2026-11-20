@@ -81,6 +81,9 @@
 .guia-cap { margin: 0; min-width: 0; }
 .guia-zoom { display: block; width: 100%; padding: 0; border: 1px solid var(--g-line); border-radius: 4px; background: var(--g-paper); cursor: zoom-in; overflow: hidden; box-shadow: 0 12px 32px -14px var(--g-shadow); }
 .guia-zoom img { display: block; width: 100%; height: auto; }
+/* Capturas verticales (más altas que anchas): alto máximo, sin estirarlas a todo el ancho */
+.guia-cap.vertical .guia-zoom { width: fit-content; max-width: 100%; }
+.guia-cap.vertical .guia-zoom img { width: auto; max-width: 100%; max-height: 720px; }
 .guia-zoom:focus-visible { outline: 3px solid var(--g-accent); outline-offset: 3px; }
 .guia-cap figcaption { display: flex; justify-content: space-between; gap: 10px; margin-top: 8px; font-size: .78rem; color: var(--g-muted); }
 .guia-txt { min-width: 0; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); }

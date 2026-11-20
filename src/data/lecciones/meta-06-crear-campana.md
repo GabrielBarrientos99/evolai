@@ -163,4 +163,4 @@ En el Administrador de anuncios → **Reglas**, Meta actúa sola. Por ejemplo:
 
 - **Ajustes de la campaña:** en la pestaña **Revisar** de cada nivel.
 - **Tope de gasto:** Facturación y pagos → Límite de gasto de la cuenta.
-- **Volver al inicio del curso:** [Lección 1](#marketing-meta/meta-01-algoritmo).
+- **Siguiente:** en la [Lección 7](#marketing-meta/meta-07-tipos-campana) ves los otros tipos de campaña y cuándo usar cada uno.

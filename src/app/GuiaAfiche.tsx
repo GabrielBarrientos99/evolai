@@ -211,6 +211,7 @@ export function PortadaAfiche({
 
 function FilaPaso({paso, onAmpliar}: {paso: Paso; onAmpliar: () => void}) {
   const {n, num, titulo, captura, intro, campos, ojo} = paso;
+  const [vertical, setVertical] = useState(false);
   const cabeza = (
     <>
       <span className="guia-num">{num}</span>
@@ -222,9 +223,14 @@ function FilaPaso({paso, onAmpliar}: {paso: Paso; onAmpliar: () => void}) {
   return (
     <li className={captura ? 'guia-paso' : 'guia-paso sin-cap'} id={`paso-${n}`}>
       {captura ? (
-        <figure className="guia-cap">
+        <figure className={vertical ? 'guia-cap vertical' : 'guia-cap'}>
           <button type="button" className="guia-zoom" onClick={onAmpliar} aria-label={`Ampliar la captura del paso ${num}`}>
-            <img src={captura.src} alt={`Captura del paso ${num}: ${captura.alt || titulo}`} loading="lazy" />
+            <img
+              src={captura.src}
+              alt={`Captura del paso ${num}: ${captura.alt || titulo}`}
+              loading="lazy"
+              onLoad={e => setVertical(e.currentTarget.naturalHeight > e.currentTarget.naturalWidth * 1.3)}
+            />
           </button>
           <figcaption>
             <code>{captura.src.split('/').pop()}</code>

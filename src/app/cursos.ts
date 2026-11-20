@@ -20,7 +20,7 @@ export const CURSOS: Curso[] = [
     id: 'marketing-meta',
     titulo: 'Anuncios en Meta para tu negocio',
     resumen:
-      'Cómo funciona hoy el algoritmo de Meta, cómo configurar Business Manager y WhatsApp, cómo estudiar a tu competencia y el plan por fases para lanzar campañas a WhatsApp.',
+      'Cómo funciona hoy el algoritmo de Meta, cómo configurar Business Manager y WhatsApp, el plan por fases y los 4 tipos de campaña que usamos (WhatsApp, video, formulario y ventas con píxel), paso a paso.',
     tipo: 'gratis',
     portada: 'curso/img/meta/portada.jpg',
     icono: MegaphoneIcon,
@@ -32,6 +32,10 @@ export const CURSOS: Curso[] = [
       {slug: 'meta-04-plan-fases', titulo: 'Lección 4 · El plan por fases para lanzar campañas'},
       {slug: 'meta-05-creativos-ia', titulo: 'Lección 5 · Creativos: capturas reales y fondos con IA'},
       {slug: 'meta-06-crear-campana', titulo: 'Lección 6 · Crea tu campaña a WhatsApp y entiende cómo aprende Meta'},
+      {slug: 'meta-07-tipos-campana', titulo: 'Lección 7 · Qué tipo de campaña usar y cuándo'},
+      {slug: 'meta-08-campana-video', titulo: 'Lección 8 · Campaña de video para que te conozcan (ThruPlay)'},
+      {slug: 'meta-09-formulario-whatsapp', titulo: 'Lección 9 · Anuncio con formulario que termina en WhatsApp'},
+      {slug: 'meta-10-ventas-pixel', titulo: 'Lección 10 · Campaña de Ventas con el píxel'},
     ],
   },
   {

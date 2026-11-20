@@ -22,6 +22,19 @@ import {GuiaAfiche, esAfiche} from '../app/GuiaAfiche';
 
 const componentesLeccion = {image: MediaLeccion};
 
+// Lecciones que tienen PDF en public/curso/pdf (los genera exportar_pdf.py). Sin PDF, no se muestra el enlace.
+const CON_PDF = new Set([
+  'meta-01-algoritmo',
+  'meta-02-business-manager',
+  'meta-03-competencia',
+  'meta-04-plan-fases',
+  'tutorial-gratis',
+  'conexion-youtube',
+  'conexion-replicate',
+  'costos-replicate',
+  'voces',
+]);
+
 // Hash: "" → catálogo · "#<curso>" → primera lección · "#<curso>/<lección>".
 function leerHash(): {curso?: TCurso; slug?: string} {
   const [a, b] = decodeURIComponent(window.location.hash.slice(1)).split('/');
@@ -124,7 +137,7 @@ function LeccionAfiche({
         </span>
         <span className="guia-chip">{curso.nivel}</span>
         {/* PDF generado por exportar_pdf.py; solo existe para las lecciones gratis */}
-        {curso.tipo === 'gratis' && <a href={`curso/pdf/${slug}.pdf`}>Descargar PDF ↓</a>}
+        {curso.tipo === 'gratis' && CON_PDF.has(slug) && <a href={`curso/pdf/${slug}.pdf`}>Descargar PDF ↓</a>}
       </span>
       <span className="guia-barra-der">
         <Selector
@@ -215,7 +228,7 @@ function VistaCurso({curso, slug}: {curso: TCurso; slug: string}) {
                 />
                 <Badge label={curso.nivel} variant="neutral" />
                 {/* PDF generado por exportar_pdf.py; solo existe para las lecciones gratis */}
-                {curso.tipo === 'gratis' && slug !== 'pruebas' && (
+                {curso.tipo === 'gratis' && CON_PDF.has(slug) && (
                   <Link href={`curso/pdf/${slug}.pdf`}>Descargar PDF ↓</Link>
                 )}
               </HStack>
