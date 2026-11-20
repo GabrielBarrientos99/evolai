@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, type ReactNode} from 'react';
 import {Heading, Text} from '@astryxdesign/core/Text';
 import {HStack, VStack} from '@astryxdesign/core/Stack';
 import {Layout, LayoutContent, LayoutPanel} from '@astryxdesign/core/Layout';
@@ -18,6 +18,7 @@ import {TarjetaCurso} from '../app/TarjetaCurso';
 import {entrar, useSesion} from '../app/auth';
 import {Voces} from '../app/Voces';
 import {MediaLeccion} from '../app/MediaLeccion';
+import {GuiaAfiche, esAfiche} from '../app/GuiaAfiche';
 
 const componentesLeccion = {image: MediaLeccion};
 
@@ -97,6 +98,63 @@ function Catalogo() {
   );
 }
 
+/** Lección en formato afiche: ancho completo, barra de lecciones arriba y anterior / siguiente abajo. */
+function LeccionAfiche({
+  curso,
+  slug,
+  md,
+  ir,
+  medio,
+}: {
+  curso: TCurso;
+  slug: string;
+  md: string;
+  ir: (s: string) => void;
+  medio?: ReactNode;
+}) {
+  const i = curso.lecciones.findIndex(l => l.slug === slug);
+  const anterior = curso.lecciones[i - 1];
+  const siguiente = curso.lecciones[i + 1];
+  const barra = (
+    <nav className="guia-barra" aria-label="Lecciones del curso">
+      <span className="guia-barra-izq">
+        <a href="curso.html">← Todos los cursos</a>
+        <span className={curso.tipo === 'gratis' ? 'guia-chip' : 'guia-chip pago'}>
+          {curso.tipo === 'gratis' ? 'Gratis' : curso.precio ?? 'De pago'}
+        </span>
+        <span className="guia-chip">{curso.nivel}</span>
+        {/* PDF generado por exportar_pdf.py; solo existe para las lecciones gratis */}
+        {curso.tipo === 'gratis' && <a href={`curso/pdf/${slug}.pdf`}>Descargar PDF ↓</a>}
+      </span>
+      <span className="guia-barra-der">
+        <Selector
+          label={`Lección de «${curso.titulo}»`}
+          isLabelHidden
+          options={curso.lecciones.map(l => ({value: l.slug, label: l.titulo}))}
+          value={slug}
+          onChange={ir}
+          width="100%"
+        />
+      </span>
+    </nav>
+  );
+  const sigue = (
+    <nav className="guia-sigue" aria-label="Anterior y siguiente lección">
+      {anterior && (
+        <a href={`#${curso.id}/${anterior.slug}`}>
+          ← Anterior<b>{anterior.titulo}</b>
+        </a>
+      )}
+      {siguiente && (
+        <a className="der" href={`#${curso.id}/${siguiente.slug}`}>
+          Siguiente →<b>{siguiente.titulo}</b>
+        </a>
+      )}
+    </nav>
+  );
+  return <GuiaAfiche md={md} arriba={barra} medio={medio} abajo={sigue} />;
+}
+
 function Bloqueado({curso}: {curso: TCurso}) {
   const {sesion} = useSesion();
   return (
@@ -120,6 +178,9 @@ function VistaCurso({curso, slug}: {curso: TCurso; slug: string}) {
   };
   // Las lecciones de pago solo las ve el admin mientras el curso no está a la venta.
   const puedeVer = curso.tipo === 'gratis' || esAdmin;
+  const md = textoLeccion(slug);
+  if (puedeVer && esAfiche(md))
+    return <LeccionAfiche curso={curso} slug={slug} md={md} ir={ir} medio={slug === 'voces' ? <Voces /> : undefined} />;
 
   return (
     <Layout
@@ -194,7 +255,11 @@ function VistaCurso({curso, slug}: {curso: TCurso; slug: string}) {
 export default function Curso() {
   const [estado, setEstado] = useState(leerHash);
   useEffect(() => {
-    const f = () => setEstado(leerHash());
+    // Al cambiar de lección (menú, selector o "Siguiente" al final del afiche) se empieza desde arriba.
+    const f = () => {
+      setEstado(leerHash());
+      window.scrollTo({top: 0});
+    };
     window.addEventListener('hashchange', f);
     return () => window.removeEventListener('hashchange', f);
   }, []);

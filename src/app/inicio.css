@@ -1,0 +1,135 @@
+/* Inicio de Biai: presenta los cursos, en el mismo estilo afiche de las lecciones (tema oscuro del sitio).
+   Portada a pantalla completa con un mosaico de capturas reales de fondo, franja de temas en movimiento
+   y secciones que aparecen al hacer scroll. Todo se queda quieto si el sistema pide "reducir movimiento". */
+.ini {
+  --i-ink: var(--color-text-primary);
+  --i-muted: var(--color-text-secondary);
+  --i-line: var(--color-border);
+  --i-paper: var(--color-background-surface);
+  --i-body: var(--color-background-body);
+  /* --morado, --morado-fuerte y --morado-suave se definen en guiaAfiche.css (mismo morado que las lecciones) */
+  --i-accent: var(--morado);
+  --i-accent-soft: var(--morado-suave);
+  --i-display: 'Archivo', 'Segoe UI', system-ui, sans-serif;
+  --i-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  color: var(--i-ink);
+  /* El contenido del sitio trae 16 px de margen: el Inicio lo anula para que la portada llegue de borde a borde */
+  width: calc(100% + 32px);
+  margin: -16px -16px 0;
+  overflow-x: clip;
+}
+.ini :where(h1, h2, h3, p) { margin: 0; }
+.ini :where(h1, h2, h3) { font-family: var(--i-display); line-height: 1.05; text-wrap: balance; }
+.ini-ancho { max-width: 1240px; margin-inline: auto; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+.ini-eyebrow { font-family: var(--i-mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--i-accent); }
+
+/* Portada */
+.ini-hero { position: relative; min-height: min(92vh, 860px); display: grid; align-items: center; isolation: isolate; overflow: hidden; border-bottom: 2px solid var(--i-ink); }
+.ini-fondo { position: absolute; inset: -12% -8%; margin: 0; z-index: -2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; transform: translateY(var(--y, 0px)) rotate(-7deg) scale(1.08); transform-origin: center; }
+.ini-fondo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--i-line); opacity: .55; }
+.ini-fondo img:nth-child(even) { transform: translateY(42px); }
+.ini-hero::after { content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(90deg, var(--i-body) 0%, color-mix(in srgb, var(--i-body) 92%, transparent) 38%, color-mix(in srgb, var(--i-body) 55%, transparent) 72%, color-mix(in srgb, var(--i-body) 35%, transparent) 100%),
+    linear-gradient(0deg, var(--i-body) 0%, transparent 30%); }
+.ini-hero > .ini-ancho { width: 100%; }
+.ini-hero-txt { padding-block: 72px 96px; display: grid; gap: 18px; max-width: 760px; }
+.ini-hero h1 { font-size: clamp(2.6rem, 7vw, 5.6rem); font-weight: 800; font-stretch: 120%; letter-spacing: -.015em; }
+.ini-hero h1 em { font-style: normal; color: var(--i-accent); }
+.ini-lead { font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--i-muted); max-width: 58ch; line-height: 1.6; }
+.ini-botones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.ini-cifras { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 14px 0 0; padding: 0; }
+.ini-cifras div { display: grid; }
+.ini-cifras dt { order: 2; font-family: var(--i-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--i-muted); }
+.ini-cifras dd { order: 1; margin: 0; font-family: var(--i-display); font-weight: 800; font-stretch: 120%; font-size: 2.2rem; line-height: 1; color: var(--i-ink); }
+.ini-bajar { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); font-family: var(--i-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--i-muted); text-decoration: none; }
+.ini-bajar::after { content: ""; display: block; width: 1px; height: 28px; margin: 8px auto 0; background: var(--i-muted); }
+
+/* Botones con forma de afiche */
+.ini-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 20px; border-radius: 4px; font-weight: 700; font-size: 1rem; text-decoration: none; border: 1px solid var(--i-ink); transition: transform .2s, background-color .2s, color .2s; }
+.ini-btn.uno { background: var(--morado-fuerte); border-color: var(--morado-fuerte); color: #fff; }
+.ini-btn.dos { background: transparent; color: var(--i-ink); }
+.ini-btn:hover { transform: translateY(-2px); }
+.ini-btn.uno:hover { box-shadow: 0 10px 28px -10px var(--morado-fuerte); }
+.ini-btn.dos:hover { background: var(--i-ink); color: var(--i-body); }
+.ini-btn:focus-visible, .ini-curso:focus-visible, .ini-bajar:focus-visible { outline: 3px solid var(--i-accent); outline-offset: 3px; }
+
+/* Franja de temas en movimiento */
+.ini-franja { border-bottom: 1px solid var(--i-line); overflow: hidden; padding-block: 16px; }
+.ini-cinta { display: flex; width: max-content; gap: 0; animation: cinta 38s linear infinite; }
+.ini-cinta span { font-family: var(--i-display); font-weight: 800; font-stretch: 115%; font-size: clamp(1.1rem, 2.2vw, 1.6rem); white-space: nowrap; padding-inline: 22px; color: var(--i-muted); }
+.ini-cinta span::after { content: "✦"; color: var(--i-accent); margin-left: 44px; font-size: .8em; }
+@keyframes cinta { to { transform: translateX(-50%); } }
+
+/* Secciones */
+.ini-sec { padding-block: 72px 16px; }
+.ini-sec hgroup h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 800; font-stretch: 115%; }
+.ini-sub { color: var(--i-muted); margin-top: 10px; max-width: 64ch; font-size: 1.05rem; line-height: 1.6; }
+.ini-cab { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; padding-bottom: 22px; border-bottom: 2px solid var(--i-ink); }
+.ini-cab a { color: var(--i-accent); font-weight: 600; }
+
+/* Tarjetas de cursos */
+.ini-cursos { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 20px; margin-top: 28px; }
+.ini-curso { display: grid; grid-template-rows: auto 1fr; background: var(--i-paper); border: 1px solid var(--i-line); border-radius: 4px; overflow: hidden; text-decoration: none; color: var(--i-ink); transition: transform .25s, border-color .25s; }
+.ini-curso:hover { transform: translateY(-4px); border-color: var(--i-accent); }
+.ini-curso-img { aspect-ratio: 16 / 9; width: 100%; object-fit: cover; display: block; background: var(--i-accent-soft); }
+.ini-curso-icono { aspect-ratio: 16 / 9; display: grid; place-items: center; background: var(--i-accent-soft); color: var(--i-accent); }
+.ini-curso-icono svg { width: 48px; height: 48px; }
+.ini-curso-txt { display: grid; gap: 10px; padding: 18px 20px 20px; align-content: start; }
+.ini-curso h3 { font-size: 1.3rem; font-weight: 800; font-stretch: 108%; }
+.ini-curso p { color: var(--i-muted); font-size: .95rem; line-height: 1.55; }
+.ini-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.ini-chip { font-family: var(--i-mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; background: var(--i-accent-soft); color: var(--i-accent); }
+.ini-chip.pago { background: var(--color-background-orange); color: var(--color-text-orange); }
+.ini-ir { font-weight: 700; color: var(--i-accent); margin-top: 4px; }
+
+/* Muestra de una lección (reutiliza la fila de paso del afiche) */
+.ini-muestra.guia { padding: 0; max-width: none; }
+.ini-muestra .guia-pasos { margin-top: 0; border-top: none; }
+.ini-muestra .guia-zoom { cursor: pointer; }
+
+/* Empieza en 3 pasos */
+.ini-tres { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 28px 0 0; padding: 0; list-style: none; border-top: 2px solid var(--i-ink); }
+.ini-tres li { padding: 28px 24px 8px 0; display: grid; gap: 8px; align-content: start; }
+.ini-tres li + li { padding-left: 24px; border-left: 1px solid var(--i-line); }
+.ini-tres b { font-family: var(--i-display); font-weight: 800; font-stretch: 125%; font-size: 3.4rem; line-height: 1; color: var(--i-accent); }
+.ini-tres h3 { font-size: 1.35rem; font-weight: 800; font-stretch: 110%; }
+.ini-tres p { color: var(--i-muted); line-height: 1.55; }
+
+/* Franja de Biai / LAIA */
+.ini-banda { margin-top: 72px; background: var(--morado-ficha); border-block: 1px solid var(--i-line); }
+.ini-banda .ini-ancho { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; padding-block: 40px; }
+.ini-banda h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; font-stretch: 112%; }
+.ini-banda p { color: var(--i-ink); margin-top: 8px; max-width: 60ch; line-height: 1.55; }
+
+/* Automatizacion Videos (Google pide este texto en la página de inicio de la app) */
+.ini-app { padding-block: 48px 64px; }
+.ini-app .ini-ancho > section { border: 1px solid var(--i-line); border-radius: 4px; padding: 22px 24px; display: grid; gap: 10px; color: var(--i-muted); font-size: .95rem; line-height: 1.6; }
+.ini-app h2 { font-size: 1.15rem; font-weight: 700; color: var(--i-ink); font-family: inherit; }
+.ini-app ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; list-style: disc; }
+.ini-app a { color: var(--i-accent); }
+
+/* Entrada de la portada y aparición al hacer scroll */
+.ini-entra { animation: entra .8s cubic-bezier(.2, .7, .2, 1) both; animation-delay: var(--d, 0ms); }
+@keyframes entra { from { opacity: 0; transform: translateY(26px); } }
+.aparece { opacity: 0; transform: translateY(34px); transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0ms); }
+.aparece.visible { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .ini-tres { grid-template-columns: minmax(0, 1fr); }
+  .ini-tres li, .ini-tres li + li { padding: 22px 0 6px; border-left: none; border-top: 1px solid var(--i-line); }
+  .ini-tres li:first-child { border-top: none; }
+  .ini-fondo { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ini-hero::after { background: linear-gradient(0deg, var(--i-body) 0%, color-mix(in srgb, var(--i-body) 78%, transparent) 60%, color-mix(in srgb, var(--i-body) 60%, transparent) 100%); }
+}
+@media (max-width: 560px) {
+  .ini-hero-txt { padding-block: 48px 88px; }
+  .ini-cifras dd { font-size: 1.8rem; }
+  .ini-btn { flex: 1 1 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ini-entra { animation: none; }
+  .aparece { opacity: 1; transform: none; transition: none; }
+  .ini-cinta { animation: none; }
+  .ini-fondo { transform: rotate(-7deg) scale(1.08); }
+}
