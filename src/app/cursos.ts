@@ -1,5 +1,5 @@
 import type {ComponentType, SVGProps} from 'react';
-import {CommandLineIcon, CpuChipIcon, MicrophoneIcon, FilmIcon, MegaphoneIcon} from '@heroicons/react/24/outline';
+import {CommandLineIcon, CpuChipIcon, MicrophoneIcon, FilmIcon, MegaphoneIcon, GlobeAltIcon} from '@heroicons/react/24/outline';
 
 // Catálogo de cursos. `lecciones` son slugs de src/data/lecciones/*.md (los genera exportar_web.py),
 // salvo 'pruebas', que es la tabla de resultados reales de los bake-offs.
@@ -36,6 +36,9 @@ export const CURSOS: Curso[] = [
       {slug: 'meta-08-campana-video', titulo: 'Lección 8 · Campaña de video para que te conozcan (ThruPlay)'},
       {slug: 'meta-09-formulario-whatsapp', titulo: 'Lección 9 · Anuncio con formulario que termina en WhatsApp'},
       {slug: 'meta-10-ventas-pixel', titulo: 'Lección 10 · Campaña de Ventas con el píxel'},
+      {slug: 'meta-11-ver-clientes-formulario', titulo: 'Lección 11 · Dónde ver a quien llenó tu formulario'},
+      {slug: 'meta-12-pruebas-zoom-video-precios', titulo: 'Lección 12 · Tres pruebas para vender sin conversar: Zoom, video y precios'},
+      {slug: 'meta-13-escalar-anuncio-ganador', titulo: 'Lección 13 · Escalar un anuncio ganador con el ID de su publicación'},
     ],
   },
   {
@@ -50,6 +53,22 @@ export const CURSOS: Curso[] = [
     lecciones: [
       {slug: 'tutorial-gratis', titulo: 'Paso a paso: API de YouTube y publicar tu app'},
       {slug: 'conexion-youtube', titulo: 'Estructura del proyecto y credenciales'},
+    ],
+  },
+  {
+    id: 'dominio-propio',
+    titulo: 'Tu web con dominio propio en GitHub Pages',
+    resumen:
+      'Qué aguanta GitHub Pages, dónde comprar tu dominio y cuánto cuesta, cómo conectarlo con candado (HTTPS), qué cambiar después en Google, Supabase y Meta, y cómo guardar reservas y pagos gratis con Cloudflare D1.',
+    tipo: 'gratis',
+    icono: GlobeAltIcon,
+    nivel: 'Principiante',
+    lecciones: [
+      {slug: 'dominio-01-github-pages', titulo: 'Lección 1 · Qué aguanta GitHub Pages (y qué no)'},
+      {slug: 'dominio-02-comprar', titulo: 'Lección 2 · Dónde comprar tu dominio y cuánto cuesta'},
+      {slug: 'dominio-03-conectar', titulo: 'Lección 3 · Conecta tu dominio a GitHub Pages'},
+      {slug: 'dominio-04-despues', titulo: 'Lección 4 · Qué cambiar después: Google, Supabase y Meta'},
+      {slug: 'dominio-05-base-de-datos-d1', titulo: 'Lección 5 · Guarda reservas y pagos gratis con Cloudflare D1'},
     ],
   },
   {

@@ -196,8 +196,8 @@ Captura a la izquierda, explicación a la derecha. Toca una captura para verla e
 
 ### Lo que el bot no ve
 
-- El chat sí llega al WhatsApp del bot, pero **el bot no ve las respuestas** del formulario.
-- Para unirlos: identifica a la persona por su **número de WhatsApp** o por el anuncio de origen.
+- El chat sí llega al WhatsApp del bot, pero **a veces sin el código del anuncio**: en ese caso el bot no sabe que vino de esta campaña.
+- Para unirlos: identifica a la persona por su **número de WhatsApp**. Cómo hacerlo, paso a paso, en la [Lección 11](#marketing-meta/meta-11-ver-clientes-formulario).
 
 ## Lo que falta y quién lo hace
 
