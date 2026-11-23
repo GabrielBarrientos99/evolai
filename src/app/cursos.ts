@@ -39,6 +39,7 @@ export const CURSOS: Curso[] = [
       {slug: 'meta-11-ver-clientes-formulario', titulo: 'Lección 11 · Dónde ver a quien llenó tu formulario'},
       {slug: 'meta-12-pruebas-zoom-video-precios', titulo: 'Lección 12 · Tres pruebas para vender sin conversar: Zoom, video y precios'},
       {slug: 'meta-13-escalar-anuncio-ganador', titulo: 'Lección 13 · Escalar un anuncio ganador con el ID de su publicación'},
+      {slug: 'meta-14-tech-provider-whatsapp', titulo: 'Lección 14 · Hazte Tech Provider de WhatsApp: la revisión de Meta paso a paso'},
     ],
   },
   {
